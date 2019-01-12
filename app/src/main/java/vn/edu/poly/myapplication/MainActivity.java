@@ -8,12 +8,17 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView tvText;
-    private Button btnOK;
+
+    private Button btnTotal;
+    private EditText edtA, edtB;
+
+    private TextView tvResult;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,32 +26,27 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        Log.e("onCreate","onCreate");
+        Log.e("onCreate", "onCreate");
 
 
-        tvText = findViewById(R.id.textView);
+        btnTotal = findViewById(R.id.btnTotal);
 
-        btnOK = findViewById(R.id.button);
+        edtA = findViewById(R.id.edtA);
 
-        tvText.setOnClickListener(new View.OnClickListener() {
+        edtB = findViewById(R.id.edtB);
+
+        tvResult = findViewById(R.id.textView);
+
+
+        btnTotal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int a = Integer.parseInt(edtA.getText().toString());
+                int b = Integer.parseInt(edtB.getText().toString());
 
-                Intent intent = new Intent(MainActivity.this, SecondActivty.class);
+                int total = a + b;
 
-                startActivity(intent);
-            }
-        });
-
-
-        btnOK.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(MainActivity.this, SecondActivty.class);
-
-                startActivity(intent);
-
+                tvResult.setText(total + "");
             }
         });
 
@@ -57,20 +57,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        Log.e("onResume","onResume");
+        Log.e("onResume", "onResume");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.e("onStop","onStop");
+        Log.e("onStop", "onStop");
 
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Log.e("onStart","onStart");
+        Log.e("onStart", "onStart");
 
     }
 }
